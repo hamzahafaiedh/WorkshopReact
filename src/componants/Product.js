@@ -1,49 +1,47 @@
 import Card from 'react-bootstrap/Card';
 import { Component } from 'react';
-import { Alert } from 'react-bootstrap';
 
 class Product extends Component{
     constructor(props){
         super(props) }
-        state={like:0,quant:this.props.product.quantity,variant:null,msg:""}
+        state={
+          like:0,
+          quant:this.props.product.quantity,
+          variant:null,
+          message:"",
+          product:this.props.product,
+          MyClass:""
+        }
+
     incLike=()=>{
       this.setState({like:this.state.like+1});
+      if(this.state.like==5){
+        this.setState({MyClass:"bestProduct"});}
     }
-    decQuantity=()=>{
-      if (this.state.quant>0){
-      this.setState({quant:this.state.quant-1})
-      this.setState({variant:'success'});
-      this.setState({msg:"You bought an item"})
-      setTimeout(() => {
-        this.setState({variant:null});
-        this.setState({msg:""})
-      }, 2000);
-      }
-    }
+
+ 
+    
     render(){
         return (<>
-            <Card style={{ width: '18rem' }}>
-              <Card.Img variant="top" src={"../assets/images/" +this.props.product.img} />
+            <Card style={{ width: '18rem' }} className={this.state.MyClass}>
+              <Card.Img variant="top" src={"../assets/images/" +this.state.product.img} />
               <Card.Body>
-                <Card.Title>{this.props.product.name}</Card.Title>
+                <Card.Title>{this.state.product.name}</Card.Title>
                 <Card.Text>
-                  Price: {this.props.product.price} dt
+                  Price: {this.state.product.price} dt
                 </Card.Text>
                 <Card.Text>
-                  Quantity: {this.state.quant}
+                  Quantity: {this.state.product.quantity}
                 </Card.Text>
                 <Card.Text>
                   Likes: {this.state.like}
                 </Card.Text>
                 <Card.Text>
                 <button onClick={this.incLike}>Like</button>
-                <button onClick={this.decQuantity} disabled={this.state.quant==0}>buy</button>
+                <button onClick={()=>{this.props.parentBuy(this.state.product)}} disabled={this.state.product.quantity===0}>buy</button>
                 </Card.Text>
               </Card.Body>
             </Card>
-            <Alert variant={this.state.variant}>
-              {this.state.msg}        
-              </Alert>
             </>
 
           );
