@@ -20,6 +20,7 @@ function NavbarComponent() {
             products
           </Nav.Link>
         </Nav>
+       
       </Container>
     </Navbar>
      );

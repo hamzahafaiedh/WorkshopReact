@@ -17,7 +17,7 @@ function ProductFunctRoute(props){
               <Card.Img variant="top" src={"../assets/images/" +product.img} />
               <Card.Body>
                 <Card.Title >
-                  <Link to={`/products/${product.name}`}>
+                  <Link to={`/products/${product.name}/${product.like}`}>
                   {product.name}
                   </Link>
                   </Card.Title>

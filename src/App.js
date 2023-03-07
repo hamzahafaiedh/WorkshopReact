@@ -8,6 +8,7 @@ import { Route,Routes } from 'react-router-dom';
 import NotFound from './Part2/NotFound';
 import NavbarComponent from './Part2/NavbarComponent';
 import ProductDetails from './Part2/ProductDetails';
+import AddProduct from './Part2/AddProduct';
 
 function App() {
   
@@ -64,7 +65,7 @@ const image=<img src="logo192.png" width="100px" height="100px"></img>
   <Routes>
   <Route path='/products'>
   <Route index element={<ProductsFunct/>} />
-    <Route path=':name' element={<ProductDetails></ProductDetails>}></Route>
+    <Route path=':name/:likes' element={<ProductDetails></ProductDetails>}></Route>
     </Route>
     <Route path='*' element={<NotFound/>}></Route>
   </Routes>

@@ -11,6 +11,7 @@ const [visible,setVisible]=useState(false);
 
     useEffect(()=>{
         setVisible(true);
+        console.log("hamza");
         setTimeout(()=>{
             setVisible(false)
         },3000)
@@ -48,21 +49,19 @@ const [visible,setVisible]=useState(false);
         <div>
     {
     products.map((p)=>{
-        return(
+        return(<>
         <ProductFunctRoute product={p} buyFunction={buy}></ProductFunctRoute>
+        {show && (
+          <Alert  style={{ marginTop: "30px" }} variant="primary">
+            You bought an Item 
+          </Alert>
+        )}
+        </>
         )
     }
     )  
 }
 </div>
-
-
-
-{show && (
-          <Alert  style={{ marginTop: "30px" }} variant="primary">
-            You bought an Item 
-          </Alert>
-        )}
 
 
     </>)

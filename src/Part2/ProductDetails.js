@@ -5,7 +5,8 @@ import products from "../products.json";
 
 function ProductDetails() {
 
-    const {name}= useParams()
+    const {name,likes}= useParams()
+
 
 
 
@@ -22,7 +23,7 @@ function ProductDetails() {
                         <h3>Price</h3>
                         <p>{p.price} dt</p>
                         <h3>Likes</h3>
-                        <p>{p.like}</p>
+                        <p>{likes}</p>
                     </>
                 )
             }
